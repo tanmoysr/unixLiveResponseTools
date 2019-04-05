@@ -1,0 +1,1 @@
+Shared library analysis can be saved in this folder.
