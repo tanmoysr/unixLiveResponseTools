@@ -1,0 +1,70 @@
+#!./tools/t_bash
+
+echo "Start Date and Time" > data/start-time
+./tools/t_date >> data/start-time
+./tools/t_md5sum ./data/start-time >> ./data/md-5
+
+read -p "INVESTIGATOR:" name
+echo "investigator name is $name" >> data/examining_info
+read -p "MM_DD_YY:" mmddyy
+echo "Examining date is $mmddyy" >> data/examining_info
+read -p "Case Number:" case
+echo "Case number is $case" >> data/examining_info
+./tools/t_md5sum ./data/examining_info >> ./data/md-5
+
+workdir=$(pwd)
+echo "you are in $workdir"
+
+#$workdir/ifconfig = (./ifconfig)
+
+echo "IP INFO" >> data/ip-data
+./tools/t_ifconfig -a >> data/ip-data
+./tools/t_md5sum ./data/ip-data >> ./data/md-5
+
+echo "NETSTAT INFO" >> data/openport-data
+./tools/t_netstat -anp >> data/openport-data
+./tools/t_md5sum ./data/openport-data >> ./data/md-5
+
+echo "ARP INFO" >> data/arp-data
+./tools/t_arp -a >> data/arp-data
+./tools/t_md5sum ./data/arp-data >> ./data/md-5
+
+echo "System INFO" >> data/system-data
+./tools/t_uname -a >> data/system-data
+./tools/t_md5sum ./data/system-data >> ./data/md-5
+
+echo "CURRENT USER" >> data/current_user
+./tools/t_whoami >> data/current_user
+./tools/t_md5sum ./data/current_user >> ./data/md-5
+
+echo "Running processes" >> data/Running-processes
+./tools/t_ps -aux >> data/Running-processes
+./tools/t_md5sum ./data/Running-processes >> ./data/md-5
+
+echo "login info" >> data/login-data
+./tools/t_who >> data/login-data
+./tools/t_md5sum ./data/login-data >> ./data/md-5
+
+echo "MOUNT INFO" >> data/mount-data
+./tools/t_lsblk >> data/mount-data
+./tools/t_md5sum ./data/mount-data >> ./data/md-5
+
+echo "Directory listing" >> data/directory-data
+./tools/t_ls >> data/directory-data
+./tools/t_md5sum ./data/directory-data >> ./data/md-5
+
+echo "INOD time" >> data/inod-time
+./tools/t_ls -alRc >> data/inod-time
+./tools/t_md5sum ./data/inod-time >> ./data/md-5
+
+echo "HOSTNAME" >> data/host_name
+./tools/t_hostname >> data/host_name
+./tools/t_md5sum ./data/host_name >> ./data/md-5
+
+echo "Access time" >> data/access-time
+./tools/t_ls -alRu >> data/access-time
+./tools/t_md5sum ./data/access-time >> ./data/md-5
+
+echo "End Date and Time" >> data/end-time
+./tools/t_date >> data/end-time
+./tools/t_md5sum ./data/end-time >> ./data/md-5

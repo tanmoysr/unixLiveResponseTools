@@ -1,0 +1,73 @@
+#!./tools/bash_t
+
+echo "Start Date and Time" > data/start-time
+./tools/date_t >> data/start-time
+./tools/md5sum_t ./data/start-time >> ./data/md-5
+
+# echo "Identify Share Dependencies called by ps_t" > data/start-time
+# ldd ./tools/ps_t > ./ldd_output/ps_t_ldd_shared_library_analysis.txt 
+
+read -p "INVESTIGATOR:" name
+echo "investigator name is $name" >> data/examining_info
+read -p "MM_DD_YY:" mmddyy
+echo "Examining date is $mmddyy" >> data/examining_info
+read -p "Case Number:" case
+echo "Case number is $case" >> data/examining_info
+./tools/md5sum_t ./data/examining_info >> ./data/md-5
+
+workdir=$(pwd)
+echo "you are in $workdir"
+
+#$workdir/ifconfig = (./ifconfig)
+
+echo "IP INFO" >> data/ip-data
+./tools/ifconfig_t -a >> data/ip-data
+./tools/md5sum_t ./data/ip-data >> ./data/md-5
+
+echo "NETSTAT INFO" >> data/openport-data
+./tools/netstat_t -anp >> data/openport-data
+./tools/md5sum_t ./data/openport-data >> ./data/md-5
+
+echo "ARP INFO" >> data/arp-data
+./tools/arp_t -a >> data/arp-data
+./tools/md5sum_t ./data/arp-data >> ./data/md-5
+
+echo "System INFO" >> data/system-data
+./tools/uname_t -a >> data/system-data
+./tools/md5sum_t ./data/system-data >> ./data/md-5
+
+echo "CURRENT USER" >> data/current_user
+./tools/whoami_t >> data/current_user
+./tools/md5sum_t ./data/current_user >> ./data/md-5
+
+echo "Running processes" >> data/Running-processes
+./tools/ps_t -aux >> data/Running-processes
+./tools/md5sum_t ./data/Running-processes >> ./data/md-5
+
+echo "login info" >> data/login-data
+./tools/who_t >> data/login-data
+./tools/md5sum_t ./data/login-data >> ./data/md-5
+
+echo "MOUNT INFO" >> data/mount-data
+./tools/lsblk_t >> data/mount-data
+./tools/md5sum_t ./data/mount-data >> ./data/md-5
+
+echo "Directory listing" >> data/directory-data
+./tools/ls_t >> data/directory-data
+./tools/md5sum_t ./data/directory-data >> ./data/md-5
+
+echo "INOD time" >> data/inod-time
+./tools/ls_t -alRc >> data/inod-time
+./tools/md5sum_t ./data/inod-time >> ./data/md-5
+
+echo "HOSTNAME" >> data/host_name
+./tools/hostname_t >> data/host_name
+./tools/md5sum_t ./data/host_name >> ./data/md-5
+
+echo "Access time" >> data/access-time
+./tools/ls_t -alRu >> data/access-time
+./tools/md5sum_t ./data/access-time >> ./data/md-5
+
+echo "End Date and Time" >> data/end-time
+./tools/date_t >> data/end-time
+./tools/md5sum_t ./data/end-time >> ./data/md-5
