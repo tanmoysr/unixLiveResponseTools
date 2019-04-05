@@ -18,10 +18,10 @@ This pendrive can only be used on Ubuntu Linux 64 bit machine. Use response file
 Steps to follow
 1. Plug-in the pendrive to hte supected system
 2.The pendrive will automatically mount and click on the pendrive to open
-3.Right click inside the open pendrive directory and click "open terminal" inorder to open the terminal with this location : username@ubuntu:~$ cd /media/device_name/pendrive
+3.Right click inside the open pendrive directory and click "open terminal" inorder to open the terminal with this location : username@ubuntu:~ cd /media/device_name/pendrive
 4.On the terminal type sudo chmod 777 ./response to give everyone execute permissions
 5.Run the bash script by using this command; 
-          username@ubuntu:~$ cd /media/device_name/pendrive$ sudo bash ./response
+          username@ubuntu:~ cd /media/device_name/pendrive sudo bash ./response
 6. The response bash file will run and data collected will be to saved into the data folder of the pendrive.
 
 CONTENT OF PENDRIVE AFTER RUNNING THE BASH SCRIPT
